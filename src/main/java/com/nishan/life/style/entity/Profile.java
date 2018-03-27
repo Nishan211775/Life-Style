@@ -73,7 +73,7 @@ public class Profile implements Serializable {
     
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "PASSWORD")
+    @Column(name = "PASS")
     private String password;
     
     @NotNull

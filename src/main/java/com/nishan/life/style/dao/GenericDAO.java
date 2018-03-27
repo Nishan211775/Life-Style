@@ -10,9 +10,9 @@ import java.util.List;
 /**
  *
  * @author Nishan Dhungana
+ * @param <T>
  */
 public interface GenericDAO<T> {
-    
     public void insert(T t);
     public void update(T t);
     public boolean delete(int id);

@@ -12,6 +12,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -20,8 +21,11 @@ import org.hibernate.Transaction;
  */
 public abstract class GenericDAOImp<T> implements com.nishan.life.style.dao.GenericDAO<T> {
 
-    private final SessionFactory sessionFactory = null;
+    @Autowired
+    private SessionFactory sessionFactory;
+    
     private Transaction trans;
+    private Session session;
     private final Class<T> persistClass;
     
     public GenericDAOImp() {
@@ -30,7 +34,7 @@ public abstract class GenericDAOImp<T> implements com.nishan.life.style.dao.Gene
 
     @Override
     public void insert(T t) {
-        Session session = sessionFactory.openSession();
+        session = sessionFactory.openSession();
         trans = session.beginTransaction();
 
         try {
@@ -44,7 +48,7 @@ public abstract class GenericDAOImp<T> implements com.nishan.life.style.dao.Gene
 
     @Override
     public void update(T t) {
-        Session session = sessionFactory.openSession();
+        session = sessionFactory.openSession();
         trans = session.beginTransaction();
 
         try {
@@ -58,7 +62,7 @@ public abstract class GenericDAOImp<T> implements com.nishan.life.style.dao.Gene
 
     @Override
     public boolean delete(int id) {
-        Session session = sessionFactory.openSession();
+        session = sessionFactory.openSession();
         trans = session.beginTransaction();
         
         boolean res = false;
@@ -81,15 +85,14 @@ public abstract class GenericDAOImp<T> implements com.nishan.life.style.dao.Gene
 
     @Override
     public List<T> getAll() {
-        Session session = sessionFactory.openSession();
-        
+        session = sessionFactory.openSession();
         Criteria res = session.createCriteria(persistClass);
         return res.list();
     }
 
     @Override
     public T getById(int id) {
-        Session session = sessionFactory.openSession();
+        session = sessionFactory.openSession();
         T t = (T) session.get(persistClass, id);
         return t;
     }
