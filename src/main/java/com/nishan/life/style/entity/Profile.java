@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -44,7 +44,7 @@ public class Profile implements Serializable {
     
     @NotNull
     @Column(name = "PROFILE_ID")
-    private Long profileId;
+    private int profileId;
     
     @NotNull
     @Size(min = 1, max = 100)
@@ -81,27 +81,32 @@ public class Profile implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
+    @NotNull
+    @Column(name = "ENABLED", insertable = false)
+    private boolean enabled;
+    
     public Profile() {
     }
 
-    public Profile(Long profileId) {
+    public Profile(int profileId) {
         this.profileId = profileId;
     }
 
-    public Profile(Long profileId, String fullName, String email, String username, String password, Date createdDate) {
+    public Profile(int profileId, String fullName, String email, String username, String password, Date createdDate, boolean enabled) {
         this.profileId = profileId;
         this.fullName = fullName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.createdDate = createdDate;
+        this.enabled = enabled;
     }
 
-    public Long getProfileId() {
+    public int getProfileId() {
         return profileId;
     }
 
-    public void setProfileId(Long profileId) {
+    public void setProfileId(int profileId) {
         this.profileId = profileId;
     }
 
@@ -168,4 +173,14 @@ public class Profile implements Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+    
+    
 }

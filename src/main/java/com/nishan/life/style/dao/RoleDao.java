@@ -5,13 +5,12 @@
  */
 package com.nishan.life.style.dao;
 
-import com.nishan.life.style.entity.Profile;
-import java.util.List;
+import javax.management.relation.Role;
 
 /**
  *
  * @author Nishan Dhungana
  */
-public interface ProfileDAO extends GenericDAO<Profile> {
-    public Profile getByUsername(String username);
+public interface RoleDao extends GenericDAO<Role>{
+    
 }

@@ -44,4 +44,8 @@ public class ProfileService implements GenericService<Profile>{
         return profileDaoImp.getById(id);
     }
     
+    public Profile getByUsername(String username) {
+        return profileDaoImp.getByUsername(username);
+    }
+    
 }
