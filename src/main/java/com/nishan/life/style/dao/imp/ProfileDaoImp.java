@@ -6,7 +6,7 @@
 package com.nishan.life.style.dao.imp;
 
 import com.nishan.life.style.dao.ProfileDAO;
-import com.nishan.life.style.daoImp.GenericDAOImp;
+import com.nishan.life.style.entity.Login;
 import com.nishan.life.style.entity.Profile;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -50,4 +50,29 @@ public class ProfileDaoImp extends GenericDAOImp<Profile> implements ProfileDAO{
         
         return p;
     }
+
+    @Override
+    public Profile login(Login login) {
+        session = sessionFactory.openSession();
+        Profile profile = null;
+        
+        final String hql = "SELECT p FROM Profile p WHERE p.username=:usernameParam and p.password=:passParam";
+        
+        try {
+            Query query = session.createQuery(hql);
+            query.setParameter("usernameParam", login.getUsername());
+            query.setParameter("passParam", login.getPassword());
+            
+            profile = (Profile)query.uniqueResult();
+            
+        } catch(HibernateException e) {
+            
+        } finally {
+            session.close();
+        }
+        
+        return profile;
+    }
+    
+    
 }

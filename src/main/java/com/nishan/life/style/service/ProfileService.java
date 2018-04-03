@@ -5,6 +5,7 @@
  */
 package com.nishan.life.style.service;
 import com.nishan.life.style.dao.imp.ProfileDaoImp;
+import com.nishan.life.style.entity.Login;
 import com.nishan.life.style.entity.Profile;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,10 @@ public class ProfileService implements GenericService<Profile>{
     
     public Profile getByUsername(String username) {
         return profileDaoImp.getByUsername(username);
+    }
+    
+    public Profile login(Login login) {
+        return profileDaoImp.login(login);
     }
     
 }

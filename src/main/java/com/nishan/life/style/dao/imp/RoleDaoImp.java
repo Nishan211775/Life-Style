@@ -6,7 +6,6 @@
 package com.nishan.life.style.dao.imp;
 
 import com.nishan.life.style.dao.RoleDao;
-import com.nishan.life.style.daoImp.GenericDAOImp;
 import javax.management.relation.Role;
 import org.springframework.stereotype.Repository;
 

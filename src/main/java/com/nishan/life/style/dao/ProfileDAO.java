@@ -5,8 +5,8 @@
  */
 package com.nishan.life.style.dao;
 
+import com.nishan.life.style.entity.Login;
 import com.nishan.life.style.entity.Profile;
-import java.util.List;
 
 /**
  *
@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface ProfileDAO extends GenericDAO<Profile> {
     public Profile getByUsername(String username);
+    public Profile login(Login login);
 }
